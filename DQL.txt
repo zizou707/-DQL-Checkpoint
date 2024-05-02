@@ -1,0 +1,37 @@
+1.SELECT * FROM Customers;
+
+2.SELECT (product_name,category) FROM Product
+ WHERE Price BETWEEN 5000 AND 10000 ;
+
+3.SELECT * FROM Product 
+  ORDER BY Price DESC
+
+4.SELECT 
+    COUNT(order_id) AS total_orders,
+    AVG(amount) AS average_amount,
+    MAX(amount) AS highest_total_amount,
+    MIN(amount) AS lowest_total_amount
+FROM orders;
+
+ 
+
+5.SELECT Customer_id FROM Orders WHERE quantity > 2 ;
+
+6.SELECT 
+    EXTRACT(MONTH FROM OrderDate) AS month,
+    COUNT(order_id) AS order_count
+FROM orders
+WHERE EXTRACT(YEAR FROM order_date) = 2020
+GROUP BY EXTRACT(MONTH FROM order_date);
+
+7.SELECT p.Product_id, p.Product_name , c.customer_name, o.OrderDate)  
+    FROM Product p INNER JOIN Customer c INNER JOIN Orders 
+      ON c.Customer_id = o.Customer_id
+
+ 
+
+8.SELECT * FROM orders
+WHERE order_date >= CURRENT_DATE - INTERVAL '3 months';
+
+9.SELECT customer_id FROM customers
+WHERE customer_id NOT IN (SELECT DISTINCT customer_id FROM orders);
